@@ -81,7 +81,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html"><strong aria-hidden="true">1.</strong> Top</a></li><li class="chapter-item expanded "><a href="tutorial.html"><strong aria-hidden="true">2.</strong> Tutorial</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="setup.html"><strong aria-hidden="true">2.1.</strong> Setting-up</a></li><li class="chapter-item expanded "><a href="pubsub.html"><strong aria-hidden="true">2.2.</strong> Publish and Subscribe</a></li><li class="chapter-item expanded "><a href="timer.html"><strong aria-hidden="true">2.3.</strong> Timer</a></li><li class="chapter-item expanded "><a href="multi_pubsub.html"><strong aria-hidden="true">2.4.</strong> Multi-threaded Publish and Subscribe</a></li><li class="chapter-item expanded "><a href="message.html" class="active"><strong aria-hidden="true">2.5.</strong> User Defined Data Structure</a></li><li class="chapter-item expanded "><a href="service.html"><strong aria-hidden="true">2.6.</strong> Service</a></li><li class="chapter-item expanded "><a href="parameter.html"><strong aria-hidden="true">2.7.</strong> Parameter</a></li><li class="chapter-item expanded "><a href="zerocopy.html"><strong aria-hidden="true">2.8.</strong> Zero Copy Publish and Subscribe</a></li><li class="chapter-item expanded "><a href="allocator.html"><strong aria-hidden="true">2.9.</strong> Custom Memory Allocator</a></li><li class="chapter-item expanded "><a href="pusbsub_and_service.html"><strong aria-hidden="true">2.10.</strong> Request to Server in Callback</a></li></ol></li><li class="chapter-item expanded "><a href="contribution.html"><strong aria-hidden="true">3.</strong> Contribution Guide</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html"><strong aria-hidden="true">1.</strong> Top</a></li><li class="chapter-item expanded "><a href="tutorial.html"><strong aria-hidden="true">2.</strong> Tutorial</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="setup.html"><strong aria-hidden="true">2.1.</strong> Setting-up</a></li><li class="chapter-item expanded "><a href="pubsub.html"><strong aria-hidden="true">2.2.</strong> Publish and Subscribe</a></li><li class="chapter-item expanded "><a href="timer.html"><strong aria-hidden="true">2.3.</strong> Timer</a></li><li class="chapter-item expanded "><a href="multi_pubsub.html"><strong aria-hidden="true">2.4.</strong> Multi-threaded Publish and Subscribe</a></li><li class="chapter-item expanded "><a href="message.html" class="active"><strong aria-hidden="true">2.5.</strong> User Defined Data Structure</a></li><li class="chapter-item expanded "><a href="service.html"><strong aria-hidden="true">2.6.</strong> Service</a></li><li class="chapter-item expanded "><a href="parameter.html"><strong aria-hidden="true">2.7.</strong> Parameter</a></li><li class="chapter-item expanded "><a href="zerocopy.html"><strong aria-hidden="true">2.8.</strong> Zero Copy Publish and Subscribe</a></li><li class="chapter-item expanded "><a href="allocator.html"><strong aria-hidden="true">2.9.</strong> Custom Memory Allocator</a></li><li class="chapter-item expanded "><a href="pusbsub_and_service.html"><strong aria-hidden="true">2.10.</strong> Request to Server in Callback</a></li></ol></li><li class="chapter-item expanded "><a href="contribution.html"><strong aria-hidden="true">3.</strong> Contribution Guide</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="setup_contribution.html"><strong aria-hidden="true">3.1.</strong> Setting-up for Contribution</a></li><li class="chapter-item expanded "><a href="build_and_test.html"><strong aria-hidden="true">3.2.</strong> Build and Test</a></li><li class="chapter-item expanded "><a href="editor_setup.html"><strong aria-hidden="true">3.3.</strong> Editor Setting-up</a></li><li class="chapter-item expanded "><a href="internal_msgs.html"><strong aria-hidden="true">3.4.</strong> Generating Messages Included by safe_drive</a></li><li class="chapter-item expanded "><a href="c_apis.html"><strong aria-hidden="true">3.5.</strong> C APIs</a></li><li class="chapter-item expanded "><a href="document.html"><strong aria-hidden="true">3.6.</strong> Documentation</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -159,8 +159,8 @@ In this tutorial, we will describe how to define user defined types.</p>
 </div>
 <h2 id="workspaces-cargotoml"><a class="header" href="#workspaces-cargotoml">Workspace's <code>Cargo.toml</code></a></h2>
 <p>The workspace's <code>Cargo.toml</code> should be created as follows.</p>
-<pre><code class="language-toml"># msgtest/src/Cargo.toml
-[workspace]
+<p><code>msgtest/src/Cargo.toml</code></p>
+<pre><code class="language-toml">[workspace]
 members = [&quot;talker&quot;, &quot;listener&quot;]
 </code></pre>
 <p>Then, create projects as follows.</p>
@@ -216,8 +216,8 @@ string&lt;=10[&lt;=3] bounded_array_bounded_str
 <h3 id="edit-my_interfacescmakeliststxt"><a class="header" href="#edit-my_interfacescmakeliststxt">Edit <code>my_interfaces/CMakeLists.txt</code></a></h3>
 <p>To generate C or C++ files and libraries for used defined types,
 we have to edit <code>CMakeLists.txt</code> as follows.</p>
-<pre><code class="language-cmake"># msgtest/src/my_interfaces/CMakeLists.txt
-find_package(rosidl_default_generators REQUIRED)
+<p><code>msgtest/src/my_interfaces/CMakeLists.txt</code></p>
+<pre><code class="language-cmake">find_package(rosidl_default_generators REQUIRED)
 
 rosidl_generate_interfaces(${PROJECT_NAME}
   &quot;msg/MyMsg.msg&quot;
@@ -228,8 +228,8 @@ rosidl_generate_interfaces(${PROJECT_NAME}
 <p>We have to specify messages files in <code>CMakeLists.txt</code>.</p>
 <h3 id="edit-my_interfacespackagexml"><a class="header" href="#edit-my_interfacespackagexml">Edit <code>my_interfaces/package.xml</code></a></h3>
 <p>We also have to edit <code>package.xml</code> as follows.</p>
-<pre><code class="language-xml">&lt;!-- msgtest/src/my_interfaces/package.xml --&gt;
-&lt;build_depend&gt;rosidl_default_generators&lt;/build_depend&gt;
+<p><code>msgtest/src/my_interfaces/package.xml</code></p>
+<pre><code class="language-xml">&lt;build_depend&gt;rosidl_default_generators&lt;/build_depend&gt;
 
 &lt;exec_depend&gt;rosidl_default_runtime&lt;/exec_depend&gt;
 
@@ -271,18 +271,18 @@ So, <code>MyMsg</code> and <code>MyMsgs</code> are generated as follows.</p>
 The most important thing is to add <code>my_interfaces</code>, which defines message types we use.</p>
 <pre><code class="language-toml"># msgtest/src/talker/Cargo.toml
 [dependencies]
-safe_drive = &quot;0.1&quot;
+safe_drive = &quot;0.2&quot;
 my_interfaces = { path = &quot;/tmp/safe_drive_tutorial/msgtest/my_interfaces&quot; }
 
 [package.metadata.ros]
 msg = [&quot;my_interfaces&quot;]
 msg_dir = &quot;/tmp/safe_drive_tutorial/msgtest&quot;
-safe_drive_version = &quot;0.1&quot;
+safe_drive_version = &quot;0.2&quot;
 </code></pre>
 <h3 id="create-talkerpackagexml"><a class="header" href="#create-talkerpackagexml">Create <code>talker/package.xml</code></a></h3>
 <p>Then create <code>package.xml</code> as follows.</p>
-<pre><code class="language-xml">&lt;!-- msgtest/src/talker/package.xml --&gt;
-&lt;?xml version=&quot;1.0&quot;?&gt;
+<p><code>msgtest/src/talker/package.xml</code></p>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot;?&gt;
 &lt;?xml-model href=&quot;http://download.ros.org/schema/package_format3.xsd&quot; schematypens=&quot;http://www.w3.org/2001/XMLSchema&quot;?&gt;
 &lt;package format=&quot;3&quot;&gt;
   &lt;name&gt;talker&lt;/name&gt;
@@ -308,10 +308,10 @@ safe_drive_version = &quot;0.1&quot;
 $ colcon build --cargo-args --release
 </code></pre>
 <p>Then, you can find Rust's files as follows.</p>
+<p><code>/tmp/safe_drive_tutorial/msgtest/my_interfaces/src/msg/my_msg.rs</code></p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
-</span>// /tmp/safe_drive_tutorial/msgtest/my_interfaces/src/msg/my_msg.rs
-#[repr(C)]
+</span>#[repr(C)]
 #[derive(Debug)]
 pub struct MyMsg {
     pub integer_value: i32,
@@ -321,10 +321,10 @@ pub struct MyMsg {
 }
 <span class="boring">}
 </span></code></pre></pre>
+<p><code>/tmp/safe_drive_tutorial/msgtest/my_interfaces/src/msg/my_msgs.rs</code></p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
-</span>// /tmp/safe_drive_tutorial/msgtest/my_interfaces/src/msg/my_msgs.rs
-#[repr(C)]
+</span>#[repr(C)]
 #[derive(Debug)]
 pub struct MyMsgs {
     pub msg1: crate::msg::my_msg::MyMsg,
@@ -334,8 +334,8 @@ pub struct MyMsgs {
 </span></code></pre></pre>
 <h3 id="edit-talkersrcmainrs"><a class="header" href="#edit-talkersrcmainrs">Edit <code>talker/src/main.rs</code></a></h3>
 <p>If you want to know how to implement a subscriber or a publisher, please see <a href="./pubsub.html">a tutorial of Pub/Sub</a>. This section describes how to handle a messages generated by <code>ros2msg_to_rs</code>.</p>
-<pre><pre class="playground"><code class="language-rust">// msgtest/src/talker/src/main.rs
-use safe_drive::{
+<p><code>msgtest/src/talker/src/main.rs</code></p>
+<pre><pre class="playground"><code class="language-rust">use safe_drive::{
     context::Context,
     error::DynError,
     logger::Logger,
@@ -435,18 +435,18 @@ you can thus update the elements of the array via the slice.</p>
 <p>The listener also requires <code>my_interfaces</code>, and edit <code>Cargo.toml</code> as follows.</p>
 <pre><code class="language-toml"># msgtest/src/listener/Cargo.toml
 [dependencies]
-safe_drive = &quot;0.1&quot;
+safe_drive = &quot;0.2&quot;
 my_interfaces = { path = &quot;/tmp/safe_drive_tutorial/msgtest/my_interfaces&quot; }
 
 [package.metadata.ros]
 msg = [&quot;my_interfaces&quot;]
 msg_dir = &quot;/tmp/safe_drive_tutorial/msgtest&quot;
-safe_drive_version = &quot;0.1&quot;
+safe_drive_version = &quot;0.2&quot;
 </code></pre>
 <h3 id="create-listenerpackagexml"><a class="header" href="#create-listenerpackagexml">Create <code>listener/package.xml</code></a></h3>
 <p>Then create <code>package.xml</code> as follows.</p>
-<pre><code class="language-xml">&lt;!-- msgtest/src/listener/package.xml --&gt;
-&lt;?xml version=&quot;1.0&quot;?&gt;
+<p><code>msgtest/src/listener/package.xml</code></p>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot;?&gt;
 &lt;?xml-model href=&quot;http://download.ros.org/schema/package_format3.xsd&quot; schematypens=&quot;http://www.w3.org/2001/XMLSchema&quot;?&gt;
 &lt;package format=&quot;3&quot;&gt;
   &lt;name&gt;listener&lt;/name&gt;
@@ -468,8 +468,8 @@ safe_drive_version = &quot;0.1&quot;
 <p>Don't forget <code>&lt;depend&gt;my_interfaces&lt;/depend&gt;</code>.</p>
 <h3 id="edit-listenersrcmainrs"><a class="header" href="#edit-listenersrcmainrs">Edit <code>listener/src/main.rs</code></a></h3>
 <p>The listener can also be implemented straightforwardly as follows.</p>
-<pre><pre class="playground"><code class="language-rust">// msgtest/src/listener/src/main.rs
-use my_interfaces_rs::my_interfaces;
+<p><code>msgtest/src/listener/src/main.rs</code></p>
+<pre><pre class="playground"><code class="language-rust">use my_interfaces_rs::my_interfaces;
 use safe_drive::{context::Context, error::DynError, logger::Logger, pr_info};
 
 fn main() -&gt; Result&lt;(), DynError&gt; {
@@ -580,10 +580,10 @@ string&lt;=10[2] static_array_bounded_str
 string&lt;=10[] dynamic_array_bounded_str
 string&lt;=10[&lt;=3] bounded_array_bounded_str
 </code></pre>
+<p><code>/tmp/safe_drive_tutorial/msgtest/my_interfaces/src/msg/my_msg_str.rs</code></p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
-</span>// /tmp/safe_drive_tutorial/msgtest/my_interfaces/src/msg/my_msg_str.rs
-#[repr(C)]
+</span>#[repr(C)]
 #[derive(Debug)]
 pub struct MyMsgStr {
     pub message: safe_drive::msg::RosString&lt;0&gt;,

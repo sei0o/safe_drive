@@ -38,8 +38,9 @@ $ cargo new async_param_server
 
 To manage 2 packages, let's prepare `Cargo.toml` file for a workspace as follows.
 
+`params/Cargo.toml`
+
 ```toml
-# params/Cargo.toml
 [workspace]
 members = ["param_server", "async_param_server"]
 ```
@@ -132,7 +133,7 @@ Add `safe_drive` to the dependencies section of `Cargo.toml` as follows.
 
 ```toml
 [dependencies]
-safe_drive = "0.1"
+safe_drive = "0.2"
 ```
 
 ### Edit `param_server/src/main.rs`
@@ -307,7 +308,7 @@ Add `safe_drive` and `tokio` to the dependencies section of `Cargo.toml` as foll
 
 ```toml
 [dependencies]
-safe_drive = "0.1"
+safe_drive = "0.2"
 tokio = { version = "1", features = ["full"] }
 ```
 

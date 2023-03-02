@@ -81,7 +81,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html"><strong aria-hidden="true">1.</strong> Top</a></li><li class="chapter-item expanded "><a href="tutorial.html"><strong aria-hidden="true">2.</strong> Tutorial</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="setup.html"><strong aria-hidden="true">2.1.</strong> Setting-up</a></li><li class="chapter-item expanded "><a href="pubsub.html"><strong aria-hidden="true">2.2.</strong> Publish and Subscribe</a></li><li class="chapter-item expanded "><a href="timer.html"><strong aria-hidden="true">2.3.</strong> Timer</a></li><li class="chapter-item expanded "><a href="multi_pubsub.html"><strong aria-hidden="true">2.4.</strong> Multi-threaded Publish and Subscribe</a></li><li class="chapter-item expanded "><a href="message.html"><strong aria-hidden="true">2.5.</strong> User Defined Data Structure</a></li><li class="chapter-item expanded "><a href="service.html" class="active"><strong aria-hidden="true">2.6.</strong> Service</a></li><li class="chapter-item expanded "><a href="parameter.html"><strong aria-hidden="true">2.7.</strong> Parameter</a></li><li class="chapter-item expanded "><a href="zerocopy.html"><strong aria-hidden="true">2.8.</strong> Zero Copy Publish and Subscribe</a></li><li class="chapter-item expanded "><a href="allocator.html"><strong aria-hidden="true">2.9.</strong> Custom Memory Allocator</a></li><li class="chapter-item expanded "><a href="pusbsub_and_service.html"><strong aria-hidden="true">2.10.</strong> Request to Server in Callback</a></li></ol></li><li class="chapter-item expanded "><a href="contribution.html"><strong aria-hidden="true">3.</strong> Contribution Guide</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html"><strong aria-hidden="true">1.</strong> Top</a></li><li class="chapter-item expanded "><a href="tutorial.html"><strong aria-hidden="true">2.</strong> Tutorial</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="setup.html"><strong aria-hidden="true">2.1.</strong> Setting-up</a></li><li class="chapter-item expanded "><a href="pubsub.html"><strong aria-hidden="true">2.2.</strong> Publish and Subscribe</a></li><li class="chapter-item expanded "><a href="timer.html"><strong aria-hidden="true">2.3.</strong> Timer</a></li><li class="chapter-item expanded "><a href="multi_pubsub.html"><strong aria-hidden="true">2.4.</strong> Multi-threaded Publish and Subscribe</a></li><li class="chapter-item expanded "><a href="message.html"><strong aria-hidden="true">2.5.</strong> User Defined Data Structure</a></li><li class="chapter-item expanded "><a href="service.html" class="active"><strong aria-hidden="true">2.6.</strong> Service</a></li><li class="chapter-item expanded "><a href="parameter.html"><strong aria-hidden="true">2.7.</strong> Parameter</a></li><li class="chapter-item expanded "><a href="zerocopy.html"><strong aria-hidden="true">2.8.</strong> Zero Copy Publish and Subscribe</a></li><li class="chapter-item expanded "><a href="allocator.html"><strong aria-hidden="true">2.9.</strong> Custom Memory Allocator</a></li><li class="chapter-item expanded "><a href="pusbsub_and_service.html"><strong aria-hidden="true">2.10.</strong> Request to Server in Callback</a></li></ol></li><li class="chapter-item expanded "><a href="contribution.html"><strong aria-hidden="true">3.</strong> Contribution Guide</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="setup_contribution.html"><strong aria-hidden="true">3.1.</strong> Setting-up for Contribution</a></li><li class="chapter-item expanded "><a href="build_and_test.html"><strong aria-hidden="true">3.2.</strong> Build and Test</a></li><li class="chapter-item expanded "><a href="editor_setup.html"><strong aria-hidden="true">3.3.</strong> Editor Setting-up</a></li><li class="chapter-item expanded "><a href="internal_msgs.html"><strong aria-hidden="true">3.4.</strong> Generating Messages Included by safe_drive</a></li><li class="chapter-item expanded "><a href="c_apis.html"><strong aria-hidden="true">3.5.</strong> C APIs</a></li><li class="chapter-item expanded "><a href="document.html"><strong aria-hidden="true">3.6.</strong> Documentation</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -173,8 +173,8 @@ $ cargo new client
 $ ros2 pkg create --build-type ament_cmake srvmsg
 </code></pre>
 <p>In addition to that, create the workspace's <code>Cargo.toml</code> as follows.</p>
-<pre><code class="language-toml"># srvtest/src/Cargo.toml
-[workspace]
+<p><code>srvtest/src/Cargo.toml</code></p>
+<pre><code class="language-toml">[workspace]
 members = [ &quot;client&quot;, &quot;server&quot;]
 </code></pre>
 <h2 id="define-protocol"><a class="header" href="#define-protocol">Define Protocol</a></h2>
@@ -210,8 +210,8 @@ rosidl_generate_interfaces(${PROJECT_NAME}
 </code></pre>
 <h3 id="edit-srvmsgpackagexml"><a class="header" href="#edit-srvmsgpackagexml">Edit <code>srvmsg/package.xml</code></a></h3>
 <p>In addition to that, the following lines must be added to <code>package.xml</code>.</p>
-<pre><code class="language-xml">&lt;!-- srvtest/src/srvmsg/package.xml --&gt;
-&lt;build_depend&gt;rosidl_default_generators&lt;/build_depend&gt;
+<p><code>srvtest/src/srvmsg/package.xml</code></p>
+<pre><code class="language-xml">&lt;build_depend&gt;rosidl_default_generators&lt;/build_depend&gt;
 &lt;exec_depend&gt;rosidl_default_runtime&lt;/exec_depend&gt;
 &lt;member_of_group&gt;rosidl_interface_packages&lt;/member_of_group&gt;
 </code></pre>
@@ -221,19 +221,19 @@ rosidl_generate_interfaces(${PROJECT_NAME}
 <p>To generate Rust types from <code>.srv</code> files,
 we have to edit <code>Cargo.toml</code> as follows.</p>
 <pre><code class="language-toml">[dependencies]
-safe_drive = &quot;0.1&quot;
+safe_drive = &quot;0.2&quot;
 srvmsg = { path = &quot;/tmp/safe_drive_tutorial/srvtest/srvmsg&quot; }
 tokio = { version = &quot;1&quot;, features = [&quot;full&quot;] }
 
 [package.metadata.ros]
 msg = [&quot;srvmsg&quot;]
 msg_dir = &quot;/tmp/safe_drive_tutorial/srvtest&quot;
-safe_drive_version = &quot;0.1&quot;
+safe_drive_version = &quot;0.2&quot;
 </code></pre>
 <h3 id="create-serverpackagexml"><a class="header" href="#create-serverpackagexml">Create <code>server/package.xml</code></a></h3>
 <p><code>package.xml</code> is also required as follows.</p>
-<pre><code class="language-xml">&lt;!-- srvtest/src/server/package.xml --&gt;
-&lt;?xml version=&quot;1.0&quot;?&gt;
+<p><code>srvtest/src/server/package.xml</code></p>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot;?&gt;
 &lt;?xml-model href=&quot;http://download.ros.org/schema/package_format3.xsd&quot; schematypens=&quot;http://www.w3.org/2001/XMLSchema&quot;?&gt;
 &lt;package format=&quot;3&quot;&gt;
   &lt;name&gt;server&lt;/name&gt;
@@ -355,9 +355,9 @@ If you pass <code>None</code> instead of <code>Some(Profile::default())</code>, 
 <h2 id="client"><a class="header" href="#client">Client</a></h2>
 <h3 id="edit-clientcargotoml"><a class="header" href="#edit-clientcargotoml">Edit <code>client/Cargo.toml</code></a></h3>
 <p><code>safe_drive</code>, and <code>tokio</code> must be added to <code>Cargo.toml</code> as follows.</p>
-<pre><code class="language-toml"># srvtest/src/client/Cargo.toml
-[dependencies]
-safe_drive = &quot;0.1&quot;
+<p><code>srvtest/src/client/Cargo.toml</code></p>
+<pre><code class="language-toml">[dependencies]
+safe_drive = &quot;0.2&quot;
 srvmsg = { path = &quot;/tmp/safe_drive_tutorial/srvtest/srvmsg&quot; }
 tokio = { version = &quot;1&quot;, features = [&quot;full&quot;] }
 
@@ -368,8 +368,8 @@ safe_drive_version = &quot;0.1&quot;
 </code></pre>
 <h3 id="create-clientpackagexml"><a class="header" href="#create-clientpackagexml">Create <code>client/package.xml</code></a></h3>
 <p><code>package.xml</code> is also required as follows.</p>
-<pre><code class="language-xml">&lt;!-- srvtest/src/client/package.xml --&gt;
-&lt;?xml version=&quot;1.0&quot;?&gt;
+<p><code>srvtest/src/client/package.xml</code></p>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot;?&gt;
 &lt;?xml-model href=&quot;http://download.ros.org/schema/package_format3.xsd&quot; schematypens=&quot;http://www.w3.org/2001/XMLSchema&quot;?&gt;
 &lt;package format=&quot;3&quot;&gt;
   &lt;name&gt;client&lt;/name&gt;

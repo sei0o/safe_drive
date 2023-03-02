@@ -81,7 +81,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html"><strong aria-hidden="true">1.</strong> Top</a></li><li class="chapter-item expanded "><a href="tutorial.html"><strong aria-hidden="true">2.</strong> Tutorial</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="setup.html"><strong aria-hidden="true">2.1.</strong> Setting-up</a></li><li class="chapter-item expanded "><a href="pubsub.html"><strong aria-hidden="true">2.2.</strong> Publish and Subscribe</a></li><li class="chapter-item expanded "><a href="timer.html"><strong aria-hidden="true">2.3.</strong> Timer</a></li><li class="chapter-item expanded "><a href="multi_pubsub.html" class="active"><strong aria-hidden="true">2.4.</strong> Multi-threaded Publish and Subscribe</a></li><li class="chapter-item expanded "><a href="message.html"><strong aria-hidden="true">2.5.</strong> User Defined Data Structure</a></li><li class="chapter-item expanded "><a href="service.html"><strong aria-hidden="true">2.6.</strong> Service</a></li><li class="chapter-item expanded "><a href="parameter.html"><strong aria-hidden="true">2.7.</strong> Parameter</a></li><li class="chapter-item expanded "><a href="zerocopy.html"><strong aria-hidden="true">2.8.</strong> Zero Copy Publish and Subscribe</a></li><li class="chapter-item expanded "><a href="allocator.html"><strong aria-hidden="true">2.9.</strong> Custom Memory Allocator</a></li><li class="chapter-item expanded "><a href="pusbsub_and_service.html"><strong aria-hidden="true">2.10.</strong> Request to Server in Callback</a></li></ol></li><li class="chapter-item expanded "><a href="contribution.html"><strong aria-hidden="true">3.</strong> Contribution Guide</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html"><strong aria-hidden="true">1.</strong> Top</a></li><li class="chapter-item expanded "><a href="tutorial.html"><strong aria-hidden="true">2.</strong> Tutorial</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="setup.html"><strong aria-hidden="true">2.1.</strong> Setting-up</a></li><li class="chapter-item expanded "><a href="pubsub.html"><strong aria-hidden="true">2.2.</strong> Publish and Subscribe</a></li><li class="chapter-item expanded "><a href="timer.html"><strong aria-hidden="true">2.3.</strong> Timer</a></li><li class="chapter-item expanded "><a href="multi_pubsub.html" class="active"><strong aria-hidden="true">2.4.</strong> Multi-threaded Publish and Subscribe</a></li><li class="chapter-item expanded "><a href="message.html"><strong aria-hidden="true">2.5.</strong> User Defined Data Structure</a></li><li class="chapter-item expanded "><a href="service.html"><strong aria-hidden="true">2.6.</strong> Service</a></li><li class="chapter-item expanded "><a href="parameter.html"><strong aria-hidden="true">2.7.</strong> Parameter</a></li><li class="chapter-item expanded "><a href="zerocopy.html"><strong aria-hidden="true">2.8.</strong> Zero Copy Publish and Subscribe</a></li><li class="chapter-item expanded "><a href="allocator.html"><strong aria-hidden="true">2.9.</strong> Custom Memory Allocator</a></li><li class="chapter-item expanded "><a href="pusbsub_and_service.html"><strong aria-hidden="true">2.10.</strong> Request to Server in Callback</a></li></ol></li><li class="chapter-item expanded "><a href="contribution.html"><strong aria-hidden="true">3.</strong> Contribution Guide</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="setup_contribution.html"><strong aria-hidden="true">3.1.</strong> Setting-up for Contribution</a></li><li class="chapter-item expanded "><a href="build_and_test.html"><strong aria-hidden="true">3.2.</strong> Build and Test</a></li><li class="chapter-item expanded "><a href="editor_setup.html"><strong aria-hidden="true">3.3.</strong> Editor Setting-up</a></li><li class="chapter-item expanded "><a href="internal_msgs.html"><strong aria-hidden="true">3.4.</strong> Generating Messages Included by safe_drive</a></li><li class="chapter-item expanded "><a href="c_apis.html"><strong aria-hidden="true">3.5.</strong> C APIs</a></li><li class="chapter-item expanded "><a href="document.html"><strong aria-hidden="true">3.6.</strong> Documentation</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -181,15 +181,15 @@ At the moment, the following directories is present.</p>
 </div>
 <p>To enable rust-analyzer in the <code>mt_pubsub</code> directory and reduce the compilation time,
 prepare workspace's <code>Cargo.toml</code> as follows.</p>
-<pre><code class="language-toml"># mt_pubsub/src/Cargo.toml
-[workspace]
+<p><code>mt_pubsub/src/Cargo.toml</code></p>
+<pre><code class="language-toml">[workspace]
 members = [&quot;publishers&quot;, &quot;subscribers&quot;]
 </code></pre>
 <p><code>package.xml</code>s are almost same as <a href="./pubsub.html">Publish and Subscribe</a>.
 If you cannot understand what these files do,
 please go back to the previous chapter.</p>
-<pre><code class="language-xml">&lt;!-- publishers/package.xml --&gt;
-&lt;?xml version=&quot;1.0&quot;?&gt;
+<p><code>publishers/package.xml</code></p>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot;?&gt;
 &lt;?xml-model href=&quot;http://download.ros.org/schema/package_format3.xsd&quot; schematypens=&quot;http://www.w3.org/2001/XMLSchema&quot;?&gt;
 &lt;package format=&quot;3&quot;&gt;
   &lt;name&gt;publishers&lt;/name&gt;
@@ -208,22 +208,21 @@ please go back to the previous chapter.</p>
   &lt;/export&gt;
 &lt;/package&gt;
 </code></pre>
-<pre><code class="language-xml">&lt;!-- subscribers/package.xml --&gt;
-&lt;!-- other entries are omitted --&gt;
-  &lt;name&gt;subscribers&lt;/name&gt;
+<p><code>subscribers/package.xml</code></p>
+<pre><code class="language-xml">  &lt;name&gt;subscribers&lt;/name&gt;
   &lt;description&gt;MT-Subscribers&lt;/description&gt;
 </code></pre>
 <p>To use <code>async_std</code>, we have to update <code>Cargo.toml</code> as follows.</p>
-<pre><code class="language-toml"># Cargo.toml
-[dependencies]
+<p><code>Cargo.toml</code></p>
+<pre><code class="language-toml">[dependencies]
 async-std = { version = &quot;1&quot;, features = [&quot;attributes&quot;] }
-safe_drive = &quot;0.1&quot;
+safe_drive = &quot;0.2&quot;
 std_msgs = { path = &quot;/tmp/safe_drive_tutorial/mt_pubsub/std_msgs&quot; }
 
 [package.metadata.ros]
 msg = [&quot;std_msgs&quot;]
 msg_dir = &quot;/tmp/safe_drive_tutorial/mt_pubsub&quot;
-safe_drive_version = &quot;0.1&quot;
+safe_drive_version = &quot;0.2&quot;
 </code></pre>
 <h2 id="publishers"><a class="header" href="#publishers">Publishers</a></h2>
 <p>The <code>publishers</code> publishes messages to 2 topics periodically.
@@ -231,8 +230,8 @@ This create 2 tasks.
 One is send a message every 500ms,
 and another is send a message every 250ms.
 The code of the <code>publishers</code> is as follows.</p>
-<pre><pre class="playground"><code class="language-rust">// mt_pubsub/src/publishers/src/main.rs
-use safe_drive::{context::Context, error::DynError};
+<p><code>mt_pubsub/src/publishers/src/main.rs</code></p>
+<pre><pre class="playground"><code class="language-rust">use safe_drive::{context::Context, error::DynError};
 use std::time::Duration;
 
 #[async_std::main]
@@ -295,8 +294,8 @@ Calling blocking functions should be avoided in asynchronous tasks.</p>
 <h2 id="subscribers"><a class="header" href="#subscribers">Subscribers</a></h2>
 <p>Then, let's implement the <code>subscribers</code>.
 The main function is almost same as previous one.</p>
-<pre><pre class="playground"><code class="language-rust">// mt_pubsub/src/subscribers/src/main
-use safe_drive::{
+<p><code>mt_pubsub/src/subscribers/src/main</code></p>
+<pre><pre class="playground"><code class="language-rust">use safe_drive::{
     context::Context, error::DynError, logger::Logger, pr_info, topic::subscriber::Subscriber,
 };
 
