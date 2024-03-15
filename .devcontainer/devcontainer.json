@@ -1,0 +1,8 @@
+{
+	"name": "custom devcontainer for safe_drive",
+	"dockerComposeFile": [
+		"./docker-compose.yml"
+	],
+	"service": "safe_drive",
+	"workspaceFolder": "/safe_drive"
+}

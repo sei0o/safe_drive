@@ -1,0 +1,4 @@
+settings set frame-format "#${frame.index}: {${ansi.fg.cyan}${line.file.basename}${ansi.normal}:${ansi.fg.yellow}${line.number}${ansi.normal}} ... {{${function.name-with-args}}}\n"
+
+settings set thread-format "thread #${thread.index} (${ansi.fg.green}${thread.name}${ansi.normal}): {${ansi.fg.cyan}${line.file.basename}${ansi.normal}:${ansi.fg.yellow}${line.number}${ansi.normal}{:${ansi.fg.yellow}${line.column}${ansi.normal}}} { ${module.file.basename}{ ${function.name-with-args}{${frame.no-debug}}}}{, queue = ${ansi.fg.green}'${thread.queue}'${ansi.normal}}{, activity = ${ansi.fg.green}'${thread.info.activity.name}'${ansi.normal}}{, ${thread.info.trace_messages} messages}{, stop reason = ${ansi.fg.red}${thread.stop-reason}${ansi.normal}}{\nReturn value: ${thread.return-value}}{\nCompleted expression: ${thread.completed-expression}}\n"
+

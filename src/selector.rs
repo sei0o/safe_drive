@@ -1122,14 +1122,8 @@ impl Selector {
             }
 
             // set action servers
-            for (_, v) in self.action_servers.iter() {
-                for h in v {
-                    guard.rcl_action_wait_set_add_action_server(
-                        &mut self.wait_set,
-                        h.server,
-                        null_mut(),
-                    )?;
-                }
+            for (s, v) in self.action_servers.iter() {
+                guard.rcl_action_wait_set_add_action_server(&mut self.wait_set, *s, null_mut())?;
             }
         }
 
@@ -1443,8 +1437,6 @@ fn notify_action_server(
         // TODO: handle expired goals
         let mut is_goal_expired = false;
 
-        let plen = handlers.len();
-
         {
             let guard = rcl::MT_UNSAFE_FN.lock();
             if let Err(e) = guard.rcl_action_server_wait_set_get_entities_ready(
@@ -1479,10 +1471,6 @@ fn notify_action_server(
 
             !(goal_remove || cancel_remove || result_remove)
         });
-
-        if plen != handlers.len() {
-            println!("[D] action server removed: {plen}=>{}", handlers.len());
-        }
 
         !handlers.is_empty()
     });

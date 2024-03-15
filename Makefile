@@ -14,6 +14,14 @@ $(SUBDIRS): FORCE
 
 FORCE:
 
+humble: $(SUBDIRS)
+	cd supplements/ros2 && colcon build
+	cargo build --features humble
+	
+iron: $(SUBDIRS)
+	cd supplements/ros2 && colcon build
+	cargo build --features iron
+
 test:
 	# cargo test test_client_wait -- --nocapture --exact
 	cargo test -- --nocapture

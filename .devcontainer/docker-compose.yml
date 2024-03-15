@@ -1,0 +1,19 @@
+version: '3'
+services:
+  safe_drive:
+    build:
+      context: .
+      shm_size: '16gb'
+    stdin_open: true
+    tty: true
+    working_dir: "/safe_drive"
+    volumes:
+      - "/home/sei0o/safe_drive:/safe_drive"
+      - "/tmp:/tmp"
+    cap_add:
+      - SYS_PTRACE
+      - SYS_ADMIN
+    security_opt:
+      - seccomp:unconfined
+    privileged: true
+    shm_size: '16gb'

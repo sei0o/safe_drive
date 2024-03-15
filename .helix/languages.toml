@@ -1,0 +1,11 @@
+[[language]]
+name = "rust"
+
+[language-server.rust-analyzer.config]
+check.features = ["humble", "custom_alloc"]
+check.ignore = [""]
+diagnostics.disabled = ["unresolved-proc-macro", "inactive-code", "ambiguous-glob-imports"]
+
+[language-server.rust-analyzer.config.cargo.extraEnv]
+SAFE_DRIVE_TEST = 1
+LD_LIBRARY_PATH = "supplements/ros2/install/example_msg/lib:$(LD_LIBRARY_PATH)"

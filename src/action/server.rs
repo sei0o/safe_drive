@@ -259,6 +259,18 @@ where
                     })
                     .collect::<Vec<_>>();
 
+                // now the goals are in the CANCELING state, which is to be transitioned to the CANCELED state
+                let uuids = goals.iter().map(|gi| gi.goal_id.uuid).collect::<Vec<_>>();
+                update_goal_status(
+                    unsafe { self.data.as_ptr_mut() },
+                    &uuids,
+                    GoalStatus::Canceling,
+                )
+                .unwrap_or_else(|err| {
+                    let logger = Logger::new("safe_drive");
+                    pr_error_in!(logger, "failed to update goal status: {}", err);
+                });
+
                 // return sender
                 let sender = ServerCancelSend {
                     data: self.data.clone(),
@@ -520,8 +532,7 @@ impl<T: ActionMsg> ServerCancelSend<T> {
             .map(|goal| goal.goal_id.uuid)
             .collect();
 
-        // TODO: the argument should be (original goal ids) - accepted_uuids?
-        update_goal_status(server, &accepted_uuids, GoalStatus::Canceling).unwrap_or_else(|err| {
+        update_goal_status(server, &accepted_uuids, GoalStatus::Canceled).unwrap_or_else(|err| {
             let logger = Logger::new("safe_drive");
             pr_error_in!(logger, "failed to update goal status: {}", err);
         });
